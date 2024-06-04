@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wf-3
+  labels:
+    app: wf-3
+    kubernetes.azure.com/generator: devhub
+  namespace: test-add
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wf-3
+  template:
+    metadata:
+      labels:
+        app: wf-3
+    spec:
+      containers:
+        - name: wf-3
+          image: acr332.azurecr.io/image-workflow-1717496785875:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
